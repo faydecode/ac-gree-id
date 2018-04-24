@@ -1,0 +1,85 @@
+<!-- 
+	ASIDE 
+	Keep it outside of #wrapper (responsive purpose)
+-->
+<aside id="aside">
+	<!--
+		Always open:
+		<li class="active alays-open">
+
+		LABELS:
+			<span class="label label-danger pull-right">1</span>
+			<span class="label label-default pull-right">1</span>
+			<span class="label label-warning pull-right">1</span>
+			<span class="label label-success pull-right">1</span>
+			<span class="label label-info pull-right">1</span>
+	-->
+	<nav id="sideNav"><!-- MAIN MENU -->
+		<ul class="nav nav-list">
+			<li id="dashboard"><!-- dashboard -->
+				<a class="dashboard" href="<?php echo base_url(); ?>admin"><!-- warning - url used by default by ajax (if eneabled) -->
+					<i class="main-icon fa fa-dashboard"></i> <span>Dashboard</span>
+				</a>
+			</li>
+			<li id="artikel">
+				<a href="#">
+					<i class="fa fa-menu-arrow pull-right"></i>
+					<i class="main-icon fa fa-archive"></i> <span>Artikel</span>
+				</a>
+				<ul><!-- submenus -->
+					<li id="kategori-artikel"><a href="<?php echo base_url(); ?>admin-kat-artikel">Kategori Artikel</a></li>
+					<li id="artikel-artikel"><a href="<?php echo base_url(); ?>admin-artikel">Artikel</a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="calendar.html">
+					<i class="main-icon fa fa-building-o"></i>
+					<span>Halaman</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="calendar.html">
+					<i class="main-icon fa fa-file-image-o"></i>
+					<span>Images</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="calendar.html">
+					<i class="main-icon fa fa-video-camera"></i>
+					<span>Video</span>
+				</a>
+			</li>
+			
+			<li>
+				<a href="#">
+					<i class="fa fa-menu-arrow pull-right"></i>
+					<i class="main-icon fa fa-users"></i> <span>Manajemen User</span>
+				</a>
+				<ul><!-- submenus -->
+					<li><a href="graphs-flot.html">Jabatan</a></li>
+					<li><a href="graphs-morris.html">Karyawan</a></li>
+				</ul>
+			</li>
+			
+			<li>
+				<a href="#">
+					<i class="fa fa-menu-arrow pull-right"></i>
+					<i class="main-icon fa fa-cogs"></i> <span>Konfigurasi</span>
+				</a>
+				<ul><!-- submenus -->
+					<li><a href="graphs-flot.html">User Profile</a></li>
+					<li><a href="graphs-morris.html">Menu</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+
+
+	</nav>
+
+	<span id="asidebg"><!-- aside fixed background --></span>
+</aside>
+<!-- /ASIDE -->

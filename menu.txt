@@ -1,0 +1,37 @@
+1. Dashboard
+2. Basis Data
+    2.1 Karyawan
+        2.1.1 Jabatan
+        2.1.2 Karyawan
+    2.2 Supplier
+        2.2.1 Kategori Supplier
+        2.2.2 Supplier
+    2.3 Produk
+        2.3.1 Satuan Produk
+        2.3.2 Kategori Produk
+        2.3.3 Produk
+    2.4 Member
+        2.4.1 Kategori Member
+        2.4.2 Mamber
+    2.5 Outlet
+        2.5.1 Kategori Outlet
+        2.5.2 Outlet
+3. OPerasi
+    3.1 Satuan Produk
+    3.2 Harga Satuan Produk
+    3.3 Harga Satuan Costumer
+    3.4 Diskon
+        3.4.1 Diskon per produk
+        3.4.2 Diskon akumulasi
+4. Transakasi
+    4.1 Pembelian
+        4.1 Pembuatan PO
+        4.2 Penerimaan
+    4.2 Penjualan
+    4.3 Retur
+        4.3.1 Retur Pembelian
+        4.3.2 Retur Penjualan
+5. Laporan
+    5.1 Laporan Produk
+    5.2 Laporan Member
+    5.3 Laporan Supplier

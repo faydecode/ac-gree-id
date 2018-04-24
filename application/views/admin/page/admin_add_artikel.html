@@ -1,0 +1,121 @@
+<script type="text/javascript">
+	
+</script>
+
+<section id="middle">
+	<div id="content" class="dashboard padding-20">
+		<!-- Collapsible -->
+		<div id="panel-misc-portlet-r1" class="panel panel-default">
+
+			<div class="panel-heading">
+
+				<span class="elipsis"><!-- panel title -->
+					<strong>Input Artikel</strong>
+				</span>
+
+				<!-- right options -->
+				<ul class="options pull-right list-inline">
+					<li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="Colapse" data-placement="bottom"></a></li>
+				</ul>
+				<!-- /right options -->
+
+			</div>
+
+			<!-- panel content -->
+			<div class="panel-body">
+				<form role="form"  action="<?php echo base_url(); ?>admin-artikel-simpan" method="post" enctype="multipart/form-data">
+					<fieldset>
+						
+						<input type="hidden" name="stat_edit" id="stat_edit" value="<?php if(!empty($artikel)) { echo $artikel->id_artikel;} ?>" />
+						<!--<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Kode Kategori</label>
+									<input type="text" name="kode" id="kode" value="" class="form-control required">
+								</div>
+							</div>
+						</div>-->
+						
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-6 col-sm-6">
+									<label>Judul Artikel</label>
+									<input type="hidden" id="cek_nama" name="cek_nama" />
+									<input type="text" name="judul" id="judul" value="<?php if(!empty($artikel)) { echo $artikel->judul_artikel;} ?>" class="form-control required"><span id="pesan"></span>
+								</div>
+								
+								<div class="col-md-6 col-sm-6">	
+									<label>Kategori Artikel</label>
+									<div class="fancy-form fancy-form-select">
+										<select id="kategori" name="kategori" class="form-control">
+											<option value="<?php if(!empty($artikel)) { echo $artikel->id_kat_artikel;} ?>"><?php if(!empty($artikel)) { echo $artikel->nama_kat_artikel;} ?></option>
+											<?php  
+												if(!empty($list_kat_artikel))
+												{
+													$list_result2 = $list_kat_artikel->result();
+													foreach($list_result2 as $row2)
+													{
+														echo '<option value="'.$row2->id_kat_artikel.'">'.$row2->nama_kat_artikel.'</option>';
+													}
+												}
+											
+											?>
+										</select>
+
+										<i class="fancy-arrow"></i>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Isi Artikel</label>
+									<textarea id="content_artikel" name="content_artikel" class="summernote form-control" data-height="200" data-lang="en-US">
+										<?php if(!empty($artikel)) { echo $artikel->content_artikel; } ?>
+									</textarea>
+								</div>
+							</div>
+						</div>
+						
+						<!-- custom file upload -->
+						<span id="img_edit"></span>
+						<input type="file" id="foto" name="foto" data-btn-text="Select a File" value="<?php if(!empty($artikel)) { echo $artikel->img_artikel;} ?>" />
+						<small class="text-muted block">Max file size: 5Mb (jpg/png)</small>
+
+						<br /><br />
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-6">
+									<button type="submit" class="btn btn-success">
+										Simpan
+									</button>
+									<a href="<?php echo base_url(); ?>admin-artikel" type="button" class="btn btn-warning">
+										Batal
+									</a>
+								</div>
+							</div>
+						
+						</div>
+
+					</fieldset>
+
+					
+
+				</form>
+				
+
+			</div>
+			<!-- /panel content -->
+
+		</div>
+		<!-- /Collapsible -->
+		
+	
+	</div>
+</section>
+

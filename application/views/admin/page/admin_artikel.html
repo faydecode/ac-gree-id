@@ -1,0 +1,164 @@
+<script type="text/javascript">
+
+</script>
+
+<section id="middle">
+	<div id="content" class="dashboard padding-20">
+		<!-- Collapsible -->
+				
+		<div id="panel-misc-portlet-l1" class="panel panel-default">
+
+			<div class="panel-heading">
+
+				<span class="elipsis"><!-- panel title -->
+					<strong>Tabel List Artikel</strong>
+				</span>
+				
+				<!-- right options -->
+				<ul class="pull-right options relative">
+					
+					<li><a href="<?php echo base_url(); ?>tambah-artikel" title="Tambah artikel?" class="btn btn-confirm btn-primary btn-xs"><i class="fa fa-plus"></i> Tambah Artikel</a></li>
+					
+				</ul>
+				<!-- /right options -->
+			</div>
+
+			<!-- panel content -->
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-bordered nomargin">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Judul Artikel</th>
+								<th>Kategori</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								if(!empty($list_artikel))
+								{
+									$no = $this->uri->segment(2,0)+1;
+									$list_result = $list_artikel->result();
+									foreach($list_result as $row)
+									{
+										echo '<tr>';
+										echo'<td><input type="hidden" id="no_'.$no.'" value="'.$row->id_artikel.'" />'.$no.'</td>';
+										echo'<td><input type="hidden" id="judul_'.$no.'" value="'.$row->judul_artikel.'" />'.$row->judul_artikel.'</td>';
+										echo'<td><input type="hidden" id="nama_kat_artikel_'.$no.'" value="'.$row->nama_kat_artikel.'" />'.$row->nama_kat_artikel.'</td>';
+										
+										
+										$src2 = base_url().'assets/images/artikel/'.$row->img_artikel;
+										
+										echo'<input type="hidden" id="id_kat_artikel_'.$no.'" value="'.$row->id_kat_artikel.'" />';
+										//echo'<input type="text" id="content_artikel_'.$no.'" value="'.$row->content_artikel.'" />';
+										echo'<input type="hidden" id="img_'.$no.'" value="'.$row->img_artikel.'" />';
+										echo'<input type="hidden" id="img_url_'.$no.'" value="'.$src2.'" />';
+										
+										echo'<td>												
+											<a href="javascript:void(0)" class="btn btn-info btn-sm" onclick="view('.$no.')" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">View</a>
+											
+											<a href="'.base_url().'edit-artikel/'.$row->id_artikel.'" class="btn btn-warning btn-sm" title ="Ubah Data '.$row->judul_artikel.'" alt = "Ubah Data '.$row->judul_artikel.'">Edit</a>
+											
+											<a class="btn btn-confirm btn-danger btn-sm" href="'.base_url().'admin-artikel-hapus/'.$row->id_artikel.'" title = "Hapus Data '.$row->judul_artikel.'" alt = "Hapus Data '.$row->judul_artikel.'">Hapus</a>
+											</td>';
+										
+										echo '</tr>';
+										
+										$no++;
+									}
+								}
+							?>
+						</tbody>
+					</table>
+				</div>
+				<center>
+					<div class="halaman"><?php echo $halaman;?></div>
+				</center>
+				
+			</div>	
+	</div>
+</section>
+
+<!-- MODAL INPUT JUMLAH BARANG  -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Tampilan Content Artikel</h4>
+			</div>
+
+			<!-- Modal Body -->
+			<div class="modal-body">
+				
+			</div>
+
+			<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- MODAL INPUT JUMLAH BARANG  -->
+
+<script type="text/javascript" src="<?=base_url();?>assets/plugins/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="<?=base_url();?>assets/admin/js/jquery.validate.min.js"></script>
+
+<script type='text/javascript'>
+	$(document).ready(function()
+    {	
+		$("#artikel").attr('class', 'active');
+		$('#artikel-artikel').attr('class', 'active');
+		//alert("ddd");
+		
+		$('.frm-input').validate();
+		
+		$('.btn-confirm').click(function(){
+			var answer = confirm(jQuery(this).attr('title'));
+            return answer;
+		});
+	});
+	
+	function edit(id)
+	{
+		alert("Mode Perubahan Data, Silahkan Cek Formulir Isian !");
+		$("#img_edit").html("<img style='border:1px solid #C8C8C8; padding:5px; float:left; margin-right:20px;' src='"+$('#img_url_'+id).val()+"' width='100px' height='100px'>");
+		$('input[name=stat_edit]').val($('#no_'+id).val());
+        $('input[name=cek_nama]').val($('#judul_'+id).val());
+		$('input[name=judul]').val($('#judul_'+id).val());
+		
+		document.getElementById("content_artikel").value = $('#content_artikel_'+id).val();
+		//alert($('#content_artikel_'+id).val());
+		//$('.content_artikel').summernote({focus: true});
+		//document.getElementById("content_artikel").summernote('code');
+		
+		document.getElementById("kategori").options.item(0).text = $('#nama_kat_artikel_'+id).val();
+		document.getElementById("kategori").options.item(0).value = $('#id_kat_artikel_'+id).val();
+				
+		$('input[name=foto]').val($('#img_'+id).val());
+		
+        
+		/*var id_artikel = $('#no_'+id).val();
+		
+		$.ajax({type: "POST", url: "<?=base_url();?>C_admin_artikel/show_content_edit/"
+			, data: "id_artikel="+id_artikel
+			, success:function(data)
+		{ 
+			document.getElementById("content_artikel").value = data;
+		}
+		});*/
+	}
+	
+	function confirmHapus()
+	{
+		//var answer = confirm("Anda yakin ingin menghapus data ini");
+        //// return false;
+	}
+</script>
+

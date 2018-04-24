@@ -1,0 +1,196 @@
+<script type="text/javascript">
+	
+</script>
+
+<section id="middle">
+	<div id="content" class="dashboard padding-20">
+		<!-- Collapsible -->
+		<div id="panel-misc-portlet-r1" class="panel panel-default">
+
+			<div class="panel-heading">
+
+				<span class="elipsis"><!-- panel title -->
+					<strong>Input Kategori Artikel</strong>
+				</span>
+
+				<!-- right options -->
+				<ul class="options pull-right list-inline">
+					<li><a href="#" class="opt panel_colapse" data-toggle="tooltip" title="Colapse" data-placement="bottom"></a></li>
+				</ul>
+				<!-- /right options -->
+
+			</div>
+
+			<!-- panel content -->
+			<div class="panel-body">
+				<form role="form" class="frm-input" action="<?php echo base_url(); ?>admin-kat-artikel-simpan" method="post" enctype="multipart/form-data">
+					<fieldset>
+						
+						<input type="hidden" name="stat_edit" id="stat_edit"/>
+						<!--<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Kode Kategori</label>
+									<input type="text" name="kode" id="kode" value="" class="form-control required">
+								</div>
+							</div>
+						</div>-->
+						
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Nama Kategori</label>
+									<input type="hidden" id="cek_nama" name="cek_nama" />
+									<input type="text" name="nama" id="nama" value="" class="form-control required"><span id="pesan"></span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Keterangan</label>
+									<textarea name="ket" id="ket" rows="4" class="form-control required"></textarea>
+								</div>
+							</div>
+						</div>
+						
+						<!-- custom file upload -->
+						<span id="img_edit"></span>
+						<input type="file" id="foto" name="foto" data-btn-text="Select a File" />
+						<small class="text-muted block">Max file size: 5Mb (jpg/png)</small>
+
+						<br /><br />
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-6">
+									<button type="submit" class="btn btn-success">
+										Simpan
+									</button>
+									<button type="reset" class="btn btn-warning">
+										Batal
+									</button>
+								</div>
+							</div>
+						
+						</div>
+
+					</fieldset>
+
+					
+
+				</form>
+				
+
+			</div>
+			<!-- /panel content -->
+
+		</div>
+		<!-- /Collapsible -->
+		
+		<div id="panel-misc-portlet-l1" class="panel panel-default">
+
+			<div class="panel-heading">
+
+				<span class="elipsis"><!-- panel title -->
+					<strong>Tabel List Kategori Artikel</strong>
+				</span>
+			</div>
+
+			<!-- panel content -->
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-bordered nomargin">
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>Nama</th>
+								<th>Keterangan</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+								if(!empty($list_kat_artikel))
+								{
+									$no = $this->uri->segment(2,0)+1;
+									$list_result = $list_kat_artikel->result();
+									foreach($list_result as $row)
+									{
+										echo '<tr>';
+										echo'<td><input type="hidden" id="no_'.$no.'" value="'.$row->id_kat_artikel.'" />'.$no.'</td>';
+										echo'<td><input type="hidden" id="nama_'.$no.'" value="'.$row->nama_kat_artikel.'" />'.$row->nama_kat_artikel.'</td>';
+										echo'<td><input type="hidden" id="ket_'.$no.'" value="'.$row->ket_kat_artikel.'" />'.$row->ket_kat_artikel.'</td>';
+										echo'<td>												
+											<a href="javascript:void(0)" class="btn btn-warning btn-sm" onclick="edit('.$no.')" title = "Ubah Data '.$row->nama_kat_artikel.'" alt = "Ubah Data '.$row->nama_kat_artikel.'">Edit</a>
+											
+											<a class="btn btn-confirm btn-danger btn-sm" href="'.base_url().'admin-kat-artikel-hapus/'.$row->id_kat_artikel.'" title = "Hapus Data '.$row->nama_kat_artikel.'" alt = "Hapus Data '.$row->nama_kat_artikel.'">Hapus</a>
+											</td>';
+										
+										$src2 = base_url().'assets/images/kategori/'.$row->img_kat_artikel;
+										
+										echo'<input type="hidden" id="img_'.$no.'" value="'.$row->img_kat_artikel.'" />';
+										echo'<input type="hidden" id="img_url_'.$no.'" value="'.$src2.'" />';
+										
+										echo '</tr>';
+										
+										$no++;
+									}
+								}
+							?>
+						</tbody>
+					</table>
+				</div>
+				<center>
+					<div class="halaman"><?php echo $halaman;?></div>
+				</center>
+			</div>	
+	</div>
+</section>
+
+
+<script type="text/javascript" src="<?=base_url();?>assets/plugins/jquery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="<?=base_url();?>assets/admin/js/jquery.validate.min.js"></script>
+
+<script type='text/javascript'>
+	$(document).ready(function()
+    {	
+		$("#artikel").attr('class', 'active');
+		$("#kategori-artikel").attr("class", "active");
+		//alert("ddd");
+		
+		$(".frm-input").validate();
+		
+		$('.btn-confirm').click(function(){
+			var answer = confirm(jQuery(this).attr('title'));
+            return answer;
+		});
+	});
+</script>
+	
+<script type='text/javascript'>
+	function edit(id)
+	{
+		alert("Mode Perubahan Data, Silahkan Cek Formulir Isian !");
+		$("#img_edit").html("<img style='border:1px solid #C8C8C8; padding:5px; float:left; margin-right:20px;' src='"+$('#img_url_'+id).val()+"' width='100px' height='100px'>");
+		$('input[name=stat_edit]').val($('#no_'+id).val());
+        $('input[name=cek_nama]').val($('#nama_'+id).val());
+		$('input[name=nama]').val($('#nama_'+id).val());
+		
+		document.getElementById("ket").value = $('#ket_'+id).val();
+		
+		$('input[name=foto]').val($('#img_'+id).val());
+		
+        //$('input[name=ket]').val($('#ket_'+id).val());
+		
+	}
+	
+	function confirmHapus()
+	{
+		//var answer = confirm("Anda yakin ingin menghapus data ini");
+        //// return false;
+	}
+</script>
+
