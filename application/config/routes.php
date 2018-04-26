@@ -59,7 +59,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 	$route['admin'] = "C_admin/index";
 	$route['admin/(:any)'] = 'C_admin/index';
-	
+
 	$route['login'] = "C_admin_login/index";
 	$route['login/(:any)'] = 'C_admin_login/index';
 
@@ -68,44 +68,41 @@ $route['translate_uri_dashes'] = FALSE;
 
 	$route['admin-kat-artikel'] = "C_admin_kat_artikel/index";
 	$route['admin-kat-artikel/(:any)'] = "C_admin_kat_artikel/index";
-	
+
 	$route['admin-kat-artikel-simpan'] = "C_admin_kat_artikel/simpan";
 	$route['admin-kat-artikel-simpan/(:any)'] = "C_admin_kat_artikel/simpan";
-	
+
 	$route['admin-kat-artikel-hapus'] = "C_admin_kat_artikel/hapus";
 	$route['admin-kat-artikel-hapus/(:any)'] = "C_admin_kat_artikel/hapus";
-	
+
 	$route['admin-artikel'] = "C_admin_artikel/index";
 	$route['admin-artikel/(:any)'] = "C_admin_artikel/index";
-	
+
 	$route['tambah-artikel'] = "C_admin_artikel/tambah";
 	$route['tambah-artikel/(:any)'] = "C_admin_artikel/tambah";
-	
+
 	$route['edit-artikel'] = "C_admin_artikel/edit";
 	$route['edit-artikel/(:any)'] = "C_admin_artikel/edit";
-	
+
 	$route['admin-artikel-simpan'] = "C_admin_artikel/simpan";
 	$route['admin-artikel-simpan/(:any)'] = "C_admin_artikel/simpan";
-	
+
 	$route['admin-artikel-hapus'] = "C_admin_artikel/hapus";
 	$route['admin-artikel-hapus/(:any)'] = "C_admin_artikel/hapus";
-	
+
     $route['admin-images'] = "C_admin_images/index";
 	$route['admin-images/(:any)'] = "C_admin_images/index";
-	
-	
-	
+
+
+
 //ROUTE INI UNTUK AREA FRONTEND
 
 	$route['course'] = "C_public_course/index";
 	$route['course/(:any)'] = "C_public_course/index";
-	
-	$route['kategori'] = "C_public_course/kategori";
-	$route['kategori/(:any)'] = "C_public_course/kategori";
-	$route['kategori/(:any)/(:any)'] = "C_public_course/kategori";
-	
+
+	$route['tentang'] = "C_public_tentang/index";
+	$route['tentang/(:any)'] = "C_public_tentang/index";
+	$route['tentang/(:any)/(:any)'] = "C_public_tentang/index";
+
 	$route['artikel'] = "C_public_course/artikel";
 	$route['artikel/(:any)'] = "C_public_course/artikel";
-	
-	
-
