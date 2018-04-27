@@ -105,8 +105,7 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['tentang/(:any)/(:any)'] = "C_public_tentang/index";
 	
 	$route['produk'] = "C_public_produk/index";
-	$route['produk/(:any)'] = "C_public_produk/index";
-	$route['produk/(:any)/(:any)'] = "C_public_produk/index";
+	$route['produk/detail/(:any)'] = "C_public_produk/detail";
 	
 	$route['pengalaman'] = "C_public_pengalaman/index";
 	$route['pengalaman/(:any)'] = "C_public_pengalaman/index";

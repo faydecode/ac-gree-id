@@ -14,6 +14,15 @@ class C_public_produk extends CI_Controller {
 		$this->load->view('public/produk.html');
 	}
 
+	public function detail() {
+		$id = $this->uri->segment(3);
+		if ($id == 1):
+			$this->load->view('public/produk/detail.html');
+		else:
+			$this->load->view('public/produk/detail1.html');
+		endif;
+	}
+
 }
 
 /* End of file welcome.php */
