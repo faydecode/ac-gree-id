@@ -103,6 +103,14 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['tentang'] = "C_public_tentang/index";
 	$route['tentang/(:any)'] = "C_public_tentang/index";
 	$route['tentang/(:any)/(:any)'] = "C_public_tentang/index";
+	
+	$route['produk'] = "C_public_produk/index";
+	$route['produk/(:any)'] = "C_public_produk/index";
+	$route['produk/(:any)/(:any)'] = "C_public_produk/index";
+	
+	$route['pengalaman'] = "C_public_pengalaman/index";
+	$route['pengalaman/(:any)'] = "C_public_pengalaman/index";
+	$route['pengalaman/(:any)/(:any)'] = "C_public_pengalaman/index";
 
 	$route['artikel'] = "C_public_course/artikel";
 	$route['artikel/(:any)'] = "C_public_course/artikel";
