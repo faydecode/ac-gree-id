@@ -112,5 +112,9 @@ $route['translate_uri_dashes'] = FALSE;
 	$route['pengalaman/(:any)'] = "C_public_pengalaman/index";
 	$route['pengalaman/(:any)/(:any)'] = "C_public_pengalaman/index";
 
+	$route['kontak'] = "C_public_kontak/index";
+	$route['kontak/(:any)'] = "C_public_kontak/index";
+	$route['kontak/(:any)/(:any)'] = "C_public_kontak/index";
+
 	$route['artikel'] = "C_public_course/artikel";
 	$route['artikel/(:any)'] = "C_public_course/artikel";
